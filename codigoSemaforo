@@ -1,0 +1,50 @@
+// atribui as potas aos leds e buzzer
+const int PORTA_VERMELHO = 12;
+const int PORTA_AMARELO = 13;
+const int PORTA_VERDE = 11;
+const int PORTA_BUZ = 10;
+
+// Constantes para o tempo de cada led e buzzer
+const int TEMPO_VERMELHO = 6000;
+const int TEMPO_AMARELO = 2000;
+const int TEMPO_VERDE = 2000;
+const int TEMPO_VERDE_PEDESTRE = 2000;
+const int TEMPO_BUZ = 1000;
+
+void setup() {
+  // atribui a configuração das portas como output
+  pinMode(PORTA_VERMELHO, OUTPUT);
+  pinMode(PORTA_AMARELO, OUTPUT);
+  pinMode(PORTA_VERDE, OUTPUT);
+  pinMode(PORTA_BUZ, OUTPUT);
+}
+
+void loop() {
+  // aciona o vermelho e o aviso de "abertura" de semáforo
+  digitalWrite(PORTA_VERMELHO, HIGH);
+  digitalWrite(PORTA_BUZ, HIGH);
+  delay(TEMPO_BUZ);
+  digitalWrite(PORTA_BUZ, LOW);
+  delay(TEMPO_VERMELHO);
+  digitalWrite(PORTA_VERMELHO, LOW);
+
+  // aciona o amarelo após o vermelho se encerrar
+  digitalWrite(PORTA_AMARELO, HIGH);
+  delay(TEMPO_AMARELO);
+  digitalWrite(PORTA_AMARELO, LOW);
+
+  // aciona o verde novamente
+  digitalWrite(PORTA_VERDE, HIGH);
+  delay(TEMPO_VERDE);
+  digitalWrite(PORTA_VERDE, LOW);
+
+  // adiciona o tempo extra no verde para pedestres
+  digitalWrite(PORTA_VERDE, HIGH);
+  delay(TEMPO_VERDE_PEDESTRE);
+  digitalWrite(PORTA_VERDE, LOW);
+
+  // retorna para o amarelo para então reiniciar o ciclo
+  digitalWrite(PORTA_AMARELO, HIGH);
+  delay(TEMPO_AMARELO);
+  digitalWrite(PORTA_AMARELO, LOW);
+}
