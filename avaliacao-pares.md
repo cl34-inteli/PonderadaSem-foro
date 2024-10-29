@@ -1,4 +1,4 @@
-# Template Avaliação Pares
+# Avaliação Pares
 
 ### Avaliador: Thiago Gomes de Almeida
 
